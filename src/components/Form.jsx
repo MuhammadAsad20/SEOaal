@@ -1,5 +1,6 @@
 import React from 'react'
 import launch from '../assets/Images/launch.png';
+import { motion } from "framer-motion";
 
 function Form() {
   return (
@@ -49,12 +50,18 @@ function Form() {
 
       {/* Small Image on Right Side - Hide on Mobile */}
       <div className="hidden lg:block w-25 h-50">
-        <img
-          src={launch}
-          alt="SEO Icon"
-          className="w-full h-full object-contain"
-        />
-      </div>
+  <motion.img
+    src={launch}
+    alt="SEO Icon"
+    className="w-full h-full object-contain"
+    animate={{ y: [0, -18, 0] }}
+    transition={{
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }}
+  />
+</div>
 
       {/* Right Side - Info & Progress */}
       <div className="w-full max-w-[540px] space-y-6 mt-10 lg:mt-0">

@@ -4,6 +4,7 @@ import socialmedia from '../assets/Images/socialmedia.png';
 import analysis from '../assets/Images/analysis.png';
 import web from '../assets/Images/web.png';
 import stadistics from '../assets/Images/stadistics.png';
+import themelight from '../assets/Images/themelight.jpg';
 
 const Info = () => {
   return (
@@ -62,40 +63,50 @@ const Info = () => {
 
 // Reusable Card Component
 const Card = ({ title, desc, icon }) => (
-    <div className="p-4 flex justify-center">
-      <div className="w-full h-auto sm:w-[540px] sm:h-[304px] bg-blue-800 border-2 border-gray-200 border-opacity-50 rounded-xl p-8 flex sm:flex-row flex-col">
+  <div className="group relative w-full h-auto sm:w-[540px] sm:h-[304px] bg-blue-800 border-2 border-gray-200 border-opacity-50 rounded-xl p-8 flex sm:flex-row flex-col transition-all duration-500 ease-in-out overflow-hidden">
+
+    {/* Background image on hover */}
+    <div
+      className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-all duration-500"
+      style={{ backgroundImage: `url(${themelight})` }}
+    ></div>
+
+    {/* Content */}
+    <div className="relative z-10 flex flex-col sm:flex-row">
+
+      {/* Icon with gradient background that turns white on hover */}
       <div className="relative w-20 h-20 sm:mr-8 sm:mb-0 mb-4 mt-10 flex-shrink-0">
-  {/* Gradient Circle */}
-  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#292391] to-[#e53e8e] z-0"></div>
-
-  {/* Image Positioned to Top-Right of Circle */}
-  <div className="absolute -top-4 -right-4 z-10">
-    <img src={icon} alt={title} className="w-20 h-18 object-contain" />
-  </div>
-</div>
-
-        <div className="flex-grow  mt-5">
-          <h2 className="text-white text-3xl font-semibold mb-3">{title}</h2>
-          <p className="leading-relaxed mt-5 text-white">{desc}</p>
-          <a className="mt-5 text-pink-600 inline-flex items-center" href="#">
-            Read More
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              className="w-4 h-4 ml-2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#292391] to-[#e53e8e] group-hover:from-white group-hover:to-white transition-all duration-500"></div>
+        <div className="absolute -top-4 -right-4">
+          <img src={icon} alt={title} className="w-20 h-20 object-contain transition duration-500 group-hover:brightness-100 group-hover:invert" />
         </div>
       </div>
-    </div>
-  );
-    
-  
 
+      {/* Text that turns black on hover */}
+      <div className="flex-grow mt-5">
+        <h2 className="text-white group-hover:text-black text-3xl font-semibold mb-3 transition-all duration-500">
+          {title}
+        </h2>
+        <p className="leading-relaxed mt-5 text-white group-hover:text-black transition-all duration-500">
+          {desc}
+        </p>
+        <a className="mt-5 text-pink-600 inline-flex items-center group-hover:text-black transition-all duration-500" href="#">
+          Read More
+          <svg
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            className="w-4 h-4 ml-2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+);
 export default Info;

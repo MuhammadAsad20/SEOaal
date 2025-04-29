@@ -1,6 +1,7 @@
 import React from 'react';
-import Slidebg from '../assets/Images/slidebg.jpg'; // background image
-import Slideart from '../assets/Images/sliderart.png'; // main image inside hero section
+import { motion } from 'framer-motion';
+import Slidebg from '../assets/Images/slidebg.jpg';
+import Slideart from '../assets/Images/sliderart.png';
 
 const Hero = () => {
     return (
@@ -13,7 +14,7 @@ const Hero = () => {
             <div className="container mx-auto h-full flex flex-col md:flex-row justify-center items-center px-5">
                 {/* Text Content */}
                 <div className="w-full md:max-w-[450px] bg-opacity-80 p-6 rounded-xl text-center md:text-left mb-10 md:mb-0">
-                    <h1 className="title-font sm:text-6xl text-3xl mb-4 font-semibold ">
+                    <h1 className="title-font sm:text-6xl text-3xl mb-4 font-semibold">
                         We Serve Best
                         <br className="hidden lg:inline-block" />
                         SEO Services
@@ -28,12 +29,20 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {/* Image */}
+                {/* Animated Image */}
                 <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 flex justify-center">
-                    <img
-                        className="object-cover object-center rounded shadow-xl"
+                    <motion.img
+                        className="object-cover object-center rounded "
                         alt="hero"
                         src={Slideart}
+                        animate={{
+                            y: [0, -20, 0], // Moves up then down
+                        }}
+                        transition={{
+                            duration: 5,
+                            repeat: Infinity,
+                            ease: 'easeInOut',
+                        }}
                     />
                 </div>
             </div>
