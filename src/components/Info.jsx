@@ -19,7 +19,7 @@ const Info = () => {
       </div>
 
       {/* Heading */}
-      <div className="container lg:w-140 px-5 py-8 lg:mx-5 xl:mx-10 2xl:mx-80 text-start">
+      <div className="container lg:w-140 px-5 py-8 lg:mx-10 xl:mx-20 2xl:mx-80 text-start">
         <h1 className="text-4xl font-bold text-gray-900 mb-6">
           We are one of the most effective SEO agencies in the universe.
         </h1>
