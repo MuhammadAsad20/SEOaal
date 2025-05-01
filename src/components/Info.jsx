@@ -19,7 +19,7 @@ const Info = () => {
       </div>
 
       {/* Heading */}
-      <div className="container sm:w-140 px-5 py-8 sm:mx-100 text-start">
+      <div className="container lg:w-140 px-5 py-8 lg:mx-20 xl:mx-100 text-start">
         <h1 className="text-4xl font-bold text-gray-900 mb-6">
           We are one of the most effective SEO agencies in the universe.
         </h1>
@@ -63,7 +63,7 @@ const Info = () => {
 
 // Reusable Card Component
 const Card = ({ title, desc, icon }) => (
-  <div className="group relative w-full h-auto sm:w-[540px] sm:h-[304px] bg-blue-800 border-2 border-gray-200 border-opacity-50 rounded-xl p-8 flex sm:flex-row flex-col transition-all duration-500 ease-in-out overflow-hidden">
+  <div className="w-full lg:w-[45%] xl:w-[540px] h-auto group relative lg:mx-3 lg:my-3 bg-blue-950 border-2 border-gray-200 border-opacity-50 rounded-xl p-8 flex lg:flex-row flex-col transition-all duration-500 ease-in-out overflow-hidden">
 
     {/* Background image on hover */}
     <div
