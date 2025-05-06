@@ -9,7 +9,7 @@ function Footer() {
       {/* Floating Subscribe Box */}
       <motion.div
         className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-        bg-white text-black w-full max-w-6xl mx-auto shadow-lg rounded-lg z-20 
+        bg-white text-black w-full max-w-[95%] md:max-w-6xl mx-auto shadow-lg rounded-lg z-20 
         px-6 py-10 flex flex-col items-center text-center"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}

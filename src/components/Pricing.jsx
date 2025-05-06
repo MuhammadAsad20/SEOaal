@@ -21,13 +21,15 @@ const PricingSection = () => {
         </div>
 
         {/* Pricing Cards Container */}
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center xl:justify-between gap-6">
+
           {/* Basic Plan */}
-          <div className="w-full h-140 sm:w-[85%] md:w-[40%] xl:w-[23%] relative">
+          <div className="w-full lg:w-[30%] relative">
+
             <div className="relative h-full p-6 rounded-xl overflow-hidden shadow-lg">
               <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#292391] to-[#e53e8e] z-0"></div>
               <div className="relative z-10 text-white flex flex-col items-center h-full">
-              <div className="text-2xl px-25 py-2 tracking-widest title-font mb-5 mt-5 font-medium border-2 border-pink-500 text-center">BASIC</div>
+              <div className="text-2xl w-full  py-2 tracking-widest title-font mb-5 mt-5 font-medium border-2 border-pink-500 text-center">BASIC</div>
                 <h1 className="text-5xl leading-none flex items-center pb-10 mb-4 border-b border-white/40">
                   <span>$50</span>
                   <span className="text-lg ml-1 mt-5 font-normal text-white/70">/PER MONTH</span>
@@ -47,11 +49,12 @@ const PricingSection = () => {
           </div>
 
           {/* Pro Plan */}
-          <div className="w-full text-black sm:w-[85%] md:w-[40%] xl:w-[23%] relative">
+          <div className="w-full lg:w-[30%] relative">
+
             <div className="relative h-full p-6 rounded-xl overflow-hidden shadow-lg">
               
               <div className="relative z-10 flex flex-col items-center h-full">
-                <div className="text-2xl px-25 py-2 tracking-widest title-font mb-5 mt-5 font-medium border-2 border-pink-500 text-center">ULTRA</div>
+                <div className="text-2xl w-full  py-2 tracking-widest title-font mb-5 mt-5 font-medium border-2 border-pink-500 text-center">ULTRA</div>
                 <h1 className="text-5xl leading-none flex items-center pb-10 mb-4 border-b border-white/40">
                   <span>$79</span>
                   <span className="text-lg ml-1 mt-5 font-normal">/PER MONTH</span>
@@ -72,11 +75,12 @@ const PricingSection = () => {
           </div>
 
           {/* Enterprise Plan */}
-          <div className="w-full sm:w-[85%] md:w-[40%] xl:w-[23%] relative">
+          <div className="w-full lg:w-[30%] relative">
+
             <div className="relative h-full p-6 rounded-xl overflow-hidden shadow-lg">
               <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#292391] to-[#e53e8e] z-0"></div>
               <div className="relative z-10 text-white flex flex-col items-center h-full">
-              <div className="text-2xl px-25 py-2 tracking-widest title-font mb-5 mt-5 font-medium border-2 border-pink-500 text-center">PRO</div>
+              <div className="text-2xl  w-full  py-2 tracking-widest title-font mb-5 mt-5 font-medium border-2 border-pink-500 text-center">PRO</div>
                 <h1 className="text-5xl leading-none flex items-center pb-10 mb-4 border-b border-white/40">
                   <span>$99</span>
                   <span className="text-lg ml-1 mt-5 font-normal text-white/70">/PER MONTH</span>

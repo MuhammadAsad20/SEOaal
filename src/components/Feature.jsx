@@ -2,11 +2,38 @@ import React from 'react';
 import quotation from '../assets/Images/quotation.png';
 
 function Feature() {
+  const testimonials = [
+    {
+      name: 'Natasha Williams',
+      role: 'Marketing Lead',
+      feedback:
+        'It goes without saying that customer data security and compliance is top of mind in most retail boardrooms.',
+    },
+    {
+      name: 'Hattie Bradley',
+      role: 'Happy Client',
+      feedback:
+        'Working with them was a smooth and professional experience. I would highly recommend it to anyone.',
+    },
+    {
+      name: 'James Peterson',
+      role: 'Startup Founder',
+      feedback:
+        'They helped bring our vision to life with creativity and dedication. A pleasure to work with!',
+    },
+    {
+      name: 'Sophia Turner',
+      role: 'Creative Director',
+      feedback:
+        'Their attention to detail and commitment to quality is top-notch. Our team is impressed!',
+    },
+  ];
+
   return (
     <section className="text-gray-600 body-font">
-      <div className="container px-5 py-20 mx-auto flex gap-30 items-start flex-wrap md:flex-nowrap justify-center">
+      <div className="container px-5 py-20 xl:mx-auto flex flex-col md:flex-col lg:flex-row gap-10 justify-center items-start">
         {/* Heading + Paragraph + Button */}
-        <div className="w-full max-w-[350px] text-left">
+        <div className="w-full max-w-[350px] text-left flex-shrink-0">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             What Clients Say About Us
           </h1>
@@ -18,59 +45,48 @@ function Feature() {
           </div>
 
           <p className="text-sm md:text-base leading-relaxed mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore dummy text of the printing.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore dummy text of the
+            printing.
           </p>
           <button className="w-32 md:w-40 py-3 md:py-4 text-sm md:text-base text-white font-semibold rounded-md bg-gradient-to-br from-[#292391] to-[#e53e8e] hover:from-pink-600 hover:to-indigo-600 transition-all">
             Get in touch
           </button>
         </div>
 
-        {/* Card 1 */}
-        <div className="flex flex-col w-full max-w-[260px]">
-          <div className="mb-2 py-3">
-            <div>
-              <div className="w-full flex justify-end">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#292391] to-[#e53e8e] rounded-full flex items-center justify-center overflow-hidden">
-                  <img
-                    alt="quotation"
-                    src={quotation}
-                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
-                  />
+        {/* Scrollable Testimonial Cards with Snap */}
+        <div className="w-full xl:w-170 overflow-x-auto scroll-smooth snap-x snap-mandatory px-2">
+          <div className="flex gap-6 md:gap-10 w-max">
+            {testimonials.map((t, i) => (
+              <div
+                key={i}
+                className="snap-center flex flex-col w-[85vw] md:w-[340px] lg:w-[270px] xl:w-[300px] flex-shrink-0"
+              >
+                <div className="mb-2 py-3">
+                  <div className="w-full flex justify-end">
+                    <div className="w-18 h-18 md:w-20 md:h-20 bg-gradient-to-br from-[#292391] to-[#e53e8e] rounded-full flex items-center justify-center overflow-hidden">
+                      <img
+                        alt="quotation"
+                        src={quotation}
+                        className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  <h2 className="text-gray-900 title-font font-bold text-base md:text-lg">
+                    {t.name}
+                  </h2>
+                  <p className="text-gray-500 text-sm font-semibold md:text-base">
+                    {t.role}
+                  </p>
                 </div>
+
+                <p className="text-gray-400 text-sm font-semibold md:text-base leading-relaxed">
+                  {t.feedback}
+                </p>
               </div>
-
-              <h2 className="text-gray-900 title-font font-medium text-base md:text-lg">Hattie Bradley</h2>
-              <p className="text-gray-500 text-sm md:text-base">Happy Client</p>
-            </div>
+            ))}
           </div>
-
-          <p className="text-sm md:text-base leading-relaxed">
-            It goes without saying that customer data security and compliance is top of mind in most retail boardrooms.
-          </p>
-        </div>
-
-        {/* Card 2 */}
-        <div className="flex flex-col w-full max-w-[260px]">
-          <div className="mb-2 py-3">
-            <div>
-              <div className="w-full flex justify-end">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#292391] to-[#e53e8e] rounded-full flex items-center justify-center overflow-hidden">
-                  <img
-                    alt="quotation"
-                    src={quotation}
-                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
-                  />
-                </div>
-              </div>
-
-              <h2 className="text-gray-900 title-font font-medium text-base md:text-lg">Natasha</h2>
-              <p className="text-gray-500 text-sm md:text-base">Happy Client</p>
-            </div>
-          </div>
-
-          <p className="text-sm md:text-base leading-relaxed">
-            It goes without saying that customer data security and compliance is top of mind in most retail boardrooms.
-          </p>
         </div>
       </div>
     </section>

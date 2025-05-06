@@ -6,7 +6,8 @@ function Form() {
   return (
     <section className="flex flex-col lg:flex-row justify-center items-start gap-10 px-4 py-12">
       {/* Left Side - Form */}
-      <div className="w-full max-w-[410px] rounded-xl shadow-lg p-8 relative">
+      <div className="flex">
+      <div className="w-full md:max-w-[1000px] lg:max-w-[416px]  rounded-xl shadow-lg p-8 relative">
         {/* Form Heading */}
         <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Free SEO Analysis</h2>
 
@@ -49,20 +50,20 @@ function Form() {
       </div>
 
       {/* Small Image on Right Side - Hide on Mobile */}
-      <div className="hidden lg:block w-25 h-50">
-  <motion.img
-    src={launch}
-    alt="SEO Icon"
-    className="w-full h-full object-contain"
-    animate={{ y: [0, -18, 0] }}
-    transition={{
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }}
-  />
-</div>
-
+      <div className="hidden md:block w-25 h-50">
+        <motion.img
+          src={launch}
+          alt="SEO Icon"
+          className="w-full h-full object-contain"
+          animate={{ y: [0, -18, 0] }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+      </div>
       {/* Right Side - Info & Progress */}
       <div className="w-full max-w-[540px] space-y-6 mt-10 lg:mt-0">
         <h2 className="text-2xl sm:text-3xl font-bold">

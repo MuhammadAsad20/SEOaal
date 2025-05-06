@@ -26,7 +26,7 @@ const ServiceCard = () => {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex md:flex-col md:items-center lg:flex-row flex-wrap justify-center gap-8">
           {cards.map((card, index) => (
             <motion.div
               key={index}
