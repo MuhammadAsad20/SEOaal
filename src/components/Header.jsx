@@ -1,32 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import {
   Bars3Icon,
-  XMarkIcon,
-  MinusIcon,
   MagnifyingGlassIcon,
   ShoppingCartIcon,
-  PhoneIcon,
-  MapPinIcon,
-  EnvelopeIcon,
 } from '@heroicons/react/24/outline';
-import {
-  FaFacebookF,
-  FaXTwitter,
-  FaInstagram,
-  FaLinkedinIn,
-} from 'react-icons/fa6';
 
-import Seoaal from '../assets/Images/Seoaal.png'; // white version of logo
-import Seoaalb from '../assets/Images/Seoaalb.png';      // black version of logo
+import Seoaal from '../assets/Images/Seoaal.png';
+import Seoaalb from '../assets/Images/Seoaalb.png';
+import Sidebar from './Sidebar';
+import MobileMenu from './MobileMenu'; // ✅ Import MobileMenu
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const [hoverClose, setHoverClose] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false); // ✅ New state
   const [selectedNav, setSelectedNav] = useState('Home');
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -64,7 +54,7 @@ const Header = () => {
 
           {/* Nav + Buttons */}
           <div className="flex items-center gap-6">
-            <nav className="hidden md:flex items-center gap-6">
+            <nav className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
                 <div key={link.name} className="relative group">
                   <a
@@ -117,7 +107,13 @@ const Header = () => {
                 <ShoppingCartIcon className="w-6 h-6" />
               </button>
               <button
-                onClick={() => setShowSidebar(!showSidebar)}
+                onClick={() => {
+                  if (window.innerWidth < 1024) {
+                    setShowMobileMenu(!showMobileMenu); // ✅ Show MobileMenu
+                  } else {
+                    setShowSidebar(!showSidebar); // ✅ Show Sidebar
+                  }
+                }}
                 className={`focus:outline-none ${
                   isScrolled ? 'text-black' : 'text-white'
                 }`}
@@ -128,7 +124,7 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu (fallback old dropdown) */}
         {isOpen && (
           <div className="md:hidden bg-white px-5 pb-4 mt-2 shadow-md">
             {navLinks.map((link) => (
@@ -154,57 +150,9 @@ const Header = () => {
         )}
       </header>
 
-      {/* Sidebar */}
-      <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
-          showSidebar ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="flex justify-between items-center px-4 py-4 border-b">
-          <img src={Seoaalb} alt="Logo" className="w-32 h-16 object-contain" />
-          <button
-            onClick={() => setShowSidebar(false)}
-            onMouseEnter={() => setHoverClose(true)}
-            onMouseLeave={() => setHoverClose(false)}
-          >
-            {hoverClose ? (
-              <MinusIcon className="w-7 h-7 text-pink-500 transition-all duration-300" />
-            ) : (
-              <XMarkIcon className="w-7 h-7 text-gray-700 transition-all duration-300" />
-            )}
-          </button>
-        </div>
-
-        <div className="p-5 text-gray-700 space-y-4">
-          <p>
-            Welcome to our digital world! We offer solutions to help you grow online.
-          </p>
-          <div className="space-y-3">
-            <h3 className="text-lg font-semibold">Contact Us</h3>
-            <div className="flex items-center gap-3">
-              <PhoneIcon className="w-5 h-5 text-pink-500" />
-              <span>+92 300 1234567</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <MapPinIcon className="w-5 h-5 text-pink-500" />
-              <span>Lahore, Pakistan</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <EnvelopeIcon className="w-5 h-5 text-pink-500" />
-              <span>info@example.com</span>
-            </div>
-          </div>
-          <div className="space-y-2">
-            <h3 className="text-lg font-semibold">Follow Us</h3>
-            <div className="flex gap-4 text-pink-500">
-              <a href="#"><FaFacebookF className="w-5 h-5" /></a>
-              <a href="#"><FaXTwitter className="w-5 h-5" /></a>
-              <a href="#"><FaInstagram className="w-5 h-5" /></a>
-              <a href="#"><FaLinkedinIn className="w-5 h-5" /></a>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Sidebar and MobileMenu Components */}
+      <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+      <MobileMenu showMobileMenu={showMobileMenu} setShowMobileMenu={setShowMobileMenu} />
     </>
   );
 };
