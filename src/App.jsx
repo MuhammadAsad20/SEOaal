@@ -16,18 +16,17 @@ function App() {
     <>
     <ScrollToTop />
     <Routes>
-      {/* Layout wrapper for all pages */}
+  <Route path="/" element={<Layout />}>
+    <Route index element={<Home />} /> {/* This renders Home at "/" */}
+    <Route path="about" element={<About />} />
+    <Route path="services" element={<Services />} />
+    <Route path="portfolio" element={<Portfolio />} />
+    <Route path="blog" element={<Blog />} />
+    <Route path="shop" element={<Shop />} />
+    <Route path="contact" element={<Contact />} />
+  </Route>
+</Routes>
 
-      <Route path="/" element={<Layout />}>
-        <Route path="/home" element={<Home />} /> {/* This makes "/" show Home */}
-        <Route path="about" element={<About />} />
-        <Route path="services" element={<Services />} />
-        <Route path="portfolio" element={<Portfolio />} />
-        <Route path="blog" element={<Blog />} />
-        <Route path="shop" element={<Shop />} />
-        <Route path="contact" element={<Contact />} />
-      </Route>
-    </Routes>
     </>
   );
 }
