@@ -1,35 +1,35 @@
-
-import Feature from "./components/Feature"
-import Footer from "./components/Footer"
-import Form from "./components/Form"
-
-import Header from "./components/Header"
-import Hero from "./components/Hero"
-import Info from "./components/Info"
-import LogoBar from "./components/LogoBar"
-import News from "./components/News"
-import Pricing from "./components/Pricing"
-import ServiceCard from "./components/ServiceCard"
-import Stats from "./components/Stats"
+// App.jsx
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Services from "./Pages/Services";
+import Portfolio from "./Pages/Portfolio";
+import Blog from "./Pages/Blog";
+import Shop from "./Pages/Shop";
+import Contact from "./Pages/Contact";
+import Layout from './components/Layout';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
-  
-
   return (
-    <div className=" text-black">
-      <Header/>
-      <Hero/>
-      <ServiceCard/>
-      <Stats/>
-      <Info/>
-      <Form/>
-      <Pricing/>
-      <LogoBar/>
-      <Feature/>
-      <News/>
-      <Footer/>
-    </div>
-  )
+    <>
+    <ScrollToTop />
+    <Routes>
+      {/* Layout wrapper for all pages */}
+
+      <Route path="/" element={<Layout />}>
+        <Route path="/home" element={<Home />} /> {/* This makes "/" show Home */}
+        <Route path="about" element={<About />} />
+        <Route path="services" element={<Services />} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="blog" element={<Blog />} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="contact" element={<Contact />} />
+      </Route>
+    </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;

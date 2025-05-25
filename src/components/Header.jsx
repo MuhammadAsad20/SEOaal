@@ -4,16 +4,15 @@ import {
   MagnifyingGlassIcon,
   ShoppingCartIcon,
 } from '@heroicons/react/24/outline';
-
+import { Link, useLocation } from 'react-router-dom'; // 🟢 React Router
 import Seoaal from '../assets/Images/Seoaal.png';
 import Seoaalb from '../assets/Images/Seoaalb.png';
 import Sidebar from './Sidebar';
-import MobileMenu from './MobileMenu'; // ✅ Import MobileMenu
+import MobileMenu from './MobileMenu';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false); // ✅ New state
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [selectedNav, setSelectedNav] = useState('Home');
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -26,62 +25,89 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', dropdown: ['Overview', 'Landing'] },
-    { name: 'About Us', dropdown: ['Our Team', 'Mission'] },
-    { name: 'Services', dropdown: ['Web', 'App', 'Design'] },
-    { name: 'Blog', dropdown: ['Latest Posts', 'Categories'] },
-    { name: 'Portfolio', dropdown: ['Projects', 'Clients'] },
-    { name: 'Shop', dropdown: ['All Products', 'Cart'] },
-    { name: 'Contact Us' },
+    { name: 'home', dropdown: ['Overview', 'Landing'] },
+    { name: 'about', dropdown: ['Our Team', 'Mission'] },
+    { name: 'services', dropdown: ['Web', 'App', 'Design'] },
+    { name: 'blog', dropdown: ['Latest Posts', 'Categories'] },
+    { name: 'portfolio', dropdown: ['Projects', 'Clients'] },
+    { name: 'shop', dropdown: ['All Products', 'Cart'] },
+    { name: 'contact' },
   ];
+
+  // Close mobile menu or sidebar when window resizes beyond breakpoint
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setShowMobileMenu(false);
+      } else {
+        setShowSidebar(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          isScrolled ? 'bg-white shadow-md text-black' : 'bg-transparent text-white'
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white shadow-md text-black' : 'bg-transparent text-white'
+          }`}
       >
         <div className="container mx-auto flex items-center justify-between px-4 py-3">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          <Link to="/home" className="flex items-center gap-2">
             <img
               src={isScrolled ? Seoaalb : Seoaal}
               alt="Logo"
               className="w-40 h-20 object-contain transition-all duration-500"
             />
-          </a>
+          </Link>
 
           {/* Nav + Buttons */}
           <div className="flex items-center gap-6">
+            {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
                 <div key={link.name} className="relative group">
-                  <a
+                  <Link
+                    to={link.name}
                     onClick={() => setSelectedNav(link.name)}
-                    className={`font-medium flex items-center gap-1 cursor-pointer transition-all ${
-                      selectedNav === link.name
-                        ? 'text-pink-500'
+                    className={`font-medium flex items-center gap-1 capitalize cursor-pointer transition-all ${selectedNav === link.name
+                        ? isScrolled
+                          ? 'text-black'
+                          : 'text-white'
                         : isScrolled
-                        ? 'text-black hover:text-pink-500'
-                        : 'text-white hover:text-pink-400'
-                    }`}
+                          ? 'text-black hover:text-pink-500'
+                          : 'text-white hover:text-pink-400'
+                      }`}
                   >
                     {selectedNav === link.name && (
-                      <span className="text-pink-500 font-bold">–</span>
+                      <span className={`${isScrolled ? 'text-black' : 'text-white'} font-bold`}>
+                        —
+                      </span>
                     )}
                     {link.name}
-                  </a>
+                  </Link>
                   {link.dropdown && (
                     <div className="absolute top-full left-0 pt-10 hidden group-hover:block z-50">
                       <div className="bg-white shadow-lg border-t-4 border-pink-500 rounded-lg w-44">
                         {link.dropdown.map((sublink) => (
-                          <a
-                            key={sublink}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                          >
+                          <Link
+                          key={sublink}
+                          href="#"
+                          className="group flex items-center gap-1 px-4 py-2 text-sm text-gray-700 rounded-md transition-all"
+                        >
+                          {/* Dash (Hidden by default, appears on hover) */}
+                          <span className="block w-0 overflow-hidden group-hover:w-3 group-hover:mr-1 transition-all duration-300">
+                            —
+                          </span>
+                          
+                          {/* Text (Color changes on hover) */}
+                          <span className="hover:text-pink-500 transition-colors duration-300">
                             {sublink}
-                          </a>
+                          </span>
+                        </Link>
+                        
                         ))}
                       </div>
                     </div>
@@ -93,64 +119,41 @@ const Header = () => {
             {/* Buttons */}
             <div className="flex items-center gap-4">
               <button
-                className={`hover:text-pink-500 hidden md:block transition-all ${
-                  isScrolled ? 'text-black' : 'text-white'
-                }`}
+                className={`hover:text-pink-500 hidden md:block transition-all ${isScrolled ? 'text-black' : 'text-white'
+                  }`}
+                aria-label="Search"
               >
                 <MagnifyingGlassIcon className="w-6 h-6" />
               </button>
               <button
-                className={`hover:text-pink-500 hidden md:block transition-all ${
-                  isScrolled ? 'text-black' : 'text-white'
-                }`}
+                className={`hover:text-pink-500 hidden md:block transition-all ${isScrolled ? 'text-black' : 'text-white'
+                  }`}
+                aria-label="Shopping Cart"
               >
                 <ShoppingCartIcon className="w-6 h-6" />
               </button>
+
+              {/* Hamburger Menu */}
               <button
                 onClick={() => {
                   if (window.innerWidth < 1024) {
-                    setShowMobileMenu(!showMobileMenu); // ✅ Show MobileMenu
+                    setShowMobileMenu(!showMobileMenu);
                   } else {
-                    setShowSidebar(!showSidebar); // ✅ Show Sidebar
+                    setShowSidebar(!showSidebar);
                   }
                 }}
-                className={`focus:outline-none ${
-                  isScrolled ? 'text-black' : 'text-white'
-                }`}
+                className={`focus:outline-none ${isScrolled ? 'text-black' : 'text-white'
+                  }`}
+                aria-label="Toggle Menu"
               >
                 <Bars3Icon className="w-8 h-8" />
               </button>
             </div>
           </div>
         </div>
-
-        {/* Mobile Menu (fallback old dropdown) */}
-        {isOpen && (
-          <div className="md:hidden bg-white px-5 pb-4 mt-2 shadow-md">
-            {navLinks.map((link) => (
-              <div key={link.name}>
-                <a className="block py-2 text-gray-800 font-semibold border-b border-gray-200 hover:text-pink-500">
-                  {link.name}
-                </a>
-                {link.dropdown && (
-                  <div className="ml-4 mt-1 flex flex-col gap-1 border-t-4 border-pink-500 pt-2">
-                    {link.dropdown.map((sublink) => (
-                      <a
-                        key={sublink}
-                        className="text-sm text-gray-600 hover:text-pink-500"
-                      >
-                        {sublink}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
       </header>
 
-      {/* Sidebar and MobileMenu Components */}
+      {/* Sidebar & Mobile Menu Components */}
       <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <MobileMenu showMobileMenu={showMobileMenu} setShowMobileMenu={setShowMobileMenu} />
     </>

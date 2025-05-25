@@ -30,15 +30,14 @@ const ServiceCard = () => {
           {cards.map((card, index) => (
             <motion.div
               key={index}
-              className="p-4 w-full sm:w-[280px] cursor-pointer bg-white shadow-lg rounded-xl p-6 text-center"
-              whileHover="hover" // This triggers the animation on the image
+              className="w-full sm:w-[280px] p-6 cursor-pointer bg-white shadow-lg rounded-xl text-center hover:shadow-2xl transform transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
             >
               {/* Animated Image Div */}
               <motion.div
                 className="relative w-[130px] h-[130px] mx-auto mb-6 flex items-center justify-center"
-                variants={{
-                  hover: { rotateY: 360, transition: { duration: 1.5, ease: 'easeInOut' } },
-                }}
+                whileHover={{ rotateY: 360 }}
+                transition={{ duration: 1.5, ease: 'easeInOut' }}
               >
                 {/* Blob Shape */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#292391] to-[#e53e8e] rounded-[30%_70%_70%_30%/30%_30%_70%_70%] z-0"></div>
@@ -53,12 +52,12 @@ const ServiceCard = () => {
               </motion.div>
 
               {/* Text Content */}
-              <h2 className="text-xl font-medium title-font text-gray-900 mt-2">{card.title}</h2>
-              <p className="text-base leading-relaxed mt-2">{card.desc}</p>
+              <h2 className="text-xl font-semibold text-gray-900 mt-4">{card.title}</h2>
+              <p className="text-base leading-relaxed text-gray-600 mt-2">{card.desc}</p>
 
               {/* Link */}
-              <div className="flex justify-center">
-                <a className="text-indigo-500 inline-flex items-center mt-3" href="#">
+              <div className="flex justify-center mt-4">
+                <a className="text-indigo-500 inline-flex items-center hover:text-indigo-700 transition duration-300" href="#">
                   Read More
                   <svg
                     fill="none"

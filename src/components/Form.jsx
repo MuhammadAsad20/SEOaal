@@ -1,8 +1,27 @@
 import React from 'react'
 import launch from '../assets/Images/launch.png';
-import { motion } from "framer-motion";
+import { useEffect, useRef } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'framer-motion';
 
 function Form() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start('visible');
+    }
+  }, [isInView, controls]);
+
+  const progressVariants = {
+    hidden: { width: 0 },
+    visible: (custom) => ({
+      width: `${custom}%`,
+      transition: { duration: 1, ease: 'easeOut' },
+    }),
+  };
   return (
     <section className="flex flex-col lg:flex-row justify-center items-start gap-10 px-4 py-12">
       {/* Left Side - Form */}
@@ -73,47 +92,58 @@ function Form() {
           Get a complete SEO analysis and discover how to improve your online presence.
         </p>
 
-        {/* Progress Options */}
-        <div className="space-y-4">
-          {/* Option 1 */}
-          <div>
-            <div className="flex justify-between mb-3">
-              <span className="text-sm font-medium text-gray-700">
-                On-Page SEO
-              </span>
-              <span className="text-sm text-gray-500">80%</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div className="bg-gradient-to-r from-indigo-500 to-pink-500 h-2.5 rounded-full w-[80%]"></div>
-            </div>
-          </div>
-
-          {/* Option 2 */}
-          <div>
-            <div className="flex justify-between mb-3">
-              <span className="text-sm font-medium text-gray-700">
-                Off-Page SEO
-              </span>
-              <span className="text-sm text-gray-500">65%</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div className="bg-gradient-to-r from-indigo-500 to-pink-500 h-2.5 rounded-full w-[65%]"></div>
-            </div>
-          </div>
-
-          {/* Option 3 */}
-          <div>
-            <div className="flex justify-between mb-3">
-              <span className="text-sm font-medium text-gray-700">
-                Keyword Ranking
-              </span>
-              <span className="text-sm text-gray-500">92%</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div className="bg-gradient-to-r from-indigo-500 to-pink-500 h-2.5 rounded-full w-[92%]"></div>
-            </div>
-          </div>
+        <div ref={ref} className="space-y-4">
+      {/* Option 1 */}
+      <div>
+        <div className="flex justify-between mb-3">
+          <span className="text-sm font-medium text-gray-700">On-Page SEO</span>
+          <span className="text-sm text-gray-500">80%</span>
         </div>
+        <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <motion.div
+            className="bg-gradient-to-r from-indigo-500 to-pink-500 h-2.5 rounded-full"
+            variants={progressVariants}
+            initial="hidden"
+            animate={controls}
+            custom={80}
+          />
+        </div>
+      </div>
+
+      {/* Option 2 */}
+      <div>
+        <div className="flex justify-between mb-3">
+          <span className="text-sm font-medium text-gray-700">Off-Page SEO</span>
+          <span className="text-sm text-gray-500">65%</span>
+        </div>
+        <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <motion.div
+            className="bg-gradient-to-r from-indigo-500 to-pink-500 h-2.5 rounded-full"
+            variants={progressVariants}
+            initial="hidden"
+            animate={controls}
+            custom={65}
+          />
+        </div>
+      </div>
+
+      {/* Option 3 */}
+      <div>
+        <div className="flex justify-between mb-3">
+          <span className="text-sm font-medium text-gray-700">Keyword Ranking</span>
+          <span className="text-sm text-gray-500">72%</span>
+        </div>
+        <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <motion.div
+            className="bg-gradient-to-r from-indigo-500 to-pink-500 h-2.5 rounded-full"
+            variants={progressVariants}
+            initial="hidden"
+            animate={controls}
+            custom={72}
+          />
+        </div>
+      </div>
+    </div>
       </div>
     </section>
   )
