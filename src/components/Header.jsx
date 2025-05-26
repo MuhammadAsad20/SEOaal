@@ -55,7 +55,7 @@ const Header = () => {
       >
         <div className="container mx-auto flex items-center justify-between px-4 py-3">
           {/* Logo */}
-          <Link to="/home" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img
               src={isScrolled ? Seoaalb : Seoaal}
               alt="Logo"
@@ -70,8 +70,8 @@ const Header = () => {
               {navLinks.map((link) => (
                 <div key={link.name} className="relative group">
                   <Link
-                   to={link.name === 'home' ? '/' : `/${link.name}`}
-  onClick={() => setSelectedNav(link.name)}
+                      to={link.name === 'home' ? '/' : `/${link.name}`}
+                      onClick={() => setSelectedNav(link.name)}
                     className={`font-medium flex items-center gap-1 capitalize cursor-pointer transition-all ${selectedNav === link.name
                         ? isScrolled
                           ? 'text-black'

@@ -16,37 +16,37 @@ const MobileMenu = ({ showMobileMenu, setShowMobileMenu }) => {
   const menuItems = [
     {
       title: "Home",
-      src: "#",
+      src: "/",
       subMenu: ["Overview", "Landing"],
     },
     {
       title: "About Us",
-      src: "#",
+      src: "/about",
       subMenu: ["Our Team", "Mission"],
     },
     {
       title: "Services",
-      src: "#",
+      src: "/services",
       subMenu: ["Web", "App", "Design"],
     },
     {
       title: "Blog",
-      src: "#",
+      src: "/blog",
       subMenu: ["Latest Posts", "Categories"],
     },
     {
       title: "Portfolio",
-      src: "#",
+      src: "/portfolio",
       subMenu: ["Projects", "Clients"],
     },
     {
       title: "Shop",
-      src: "#",
+      src: "/shop",
       subMenu: ["All Products", "Cart"],
     },
     {
       title: "Contact Us",
-      src: "#",
+      src: "/contact",
       subMenu: [],
     },
   ];
