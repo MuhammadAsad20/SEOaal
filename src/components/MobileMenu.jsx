@@ -76,7 +76,10 @@ const MobileMenu = ({ showMobileMenu, setShowMobileMenu }) => {
             <div className="flex justify-between items-center">
             <Link
                 to={item.src}
-                onClick={() => setActiveItem(item.title)}
+                onClick={() => {
+    setActiveItem(item.title);
+    setShowMobileMenu(false); // Close the sidebar on click
+  }}
                 className={`font-medium transition-colors cursor-pointer ${
                   activeItem === item.title
                     ? "text-amber-400"
