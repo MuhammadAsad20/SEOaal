@@ -21,32 +21,32 @@ const MobileMenu = ({ showMobileMenu, setShowMobileMenu }) => {
     },
     {
       title: "About Us",
-      src: "/about",
+      src: "about",
       subMenu: ["Our Team", "Mission"],
     },
     {
       title: "Services",
-      src: "/services",
+      src: "services",
       subMenu: ["Web", "App", "Design"],
     },
     {
       title: "Blog",
-      src: "/blog",
+      src: "blog",
       subMenu: ["Latest Posts", "Categories"],
     },
     {
       title: "Portfolio",
-      src: "/portfolio",
+      src: "portfolio",
       subMenu: ["Projects", "Clients"],
     },
     {
       title: "Shop",
-      src: "/shop",
+      src: "shop",
       subMenu: ["All Products", "Cart"],
     },
     {
       title: "Contact Us",
-      src: "/contact",
+      src: "contact",
       subMenu: [],
     },
   ];
