@@ -1,5 +1,6 @@
 import React from "react";
 import Seoaal from "../assets/Images/Seoaal.png";
+import { Link } from "react-router-dom";
 
 const MobileMenu = ({ showMobileMenu, setShowMobileMenu }) => {
   const [openMenus, setOpenMenus] = React.useState({});
@@ -73,8 +74,8 @@ const MobileMenu = ({ showMobileMenu, setShowMobileMenu }) => {
           <div key={index} className="mb-4">
             {/* Main menu item */}
             <div className="flex justify-between items-center">
-            <a
-                href={item.src}
+            <Link
+                to={item.src}
                 onClick={() => setActiveItem(item.title)}
                 className={`font-medium transition-colors cursor-pointer ${
                   activeItem === item.title
@@ -83,7 +84,7 @@ const MobileMenu = ({ showMobileMenu, setShowMobileMenu }) => {
                 }`}
               >
                 {item.title}
-              </a>
+              </Link>
 
   {item.subMenu.length > 0 && (
     <button
