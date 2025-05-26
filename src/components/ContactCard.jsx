@@ -1,7 +1,9 @@
 import React from "react";
 const ContactCard = ({ icon, title, first, second, highlight, bgColor }) => {
     return (
-      <div className={`py-10 md:w-1/4 flex ${bgColor} rounded-2xl`}>
+      <div
+      className={`w-full  lg:w-1/4 px-4 mb-6 ${bgColor} rounded-2xl py-8 flex flex-col sm:flex-row items-start`}
+    >
         <div className="w-20 h-20 inline-flex items-start justify-center rounded-full mb-4 flex-shrink-0">
           {icon}
         </div>

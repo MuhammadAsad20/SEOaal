@@ -28,7 +28,7 @@ const allProducts = [
       image: "https://demo.zozothemes.com/seoaal/wp-content/uploads/sites/40/2013/06/T_5_front-1-300x300.jpg",
       originalPrice: "15.00",
       salePrice: "12.00",
-      onSale: true
+      onSale: false
     },
     {
       title: "Another Poster",
@@ -49,14 +49,14 @@ const allProducts = [
       image: "https://demo.zozothemes.com/seoaal/wp-content/uploads/sites/40/2013/06/T_2_front-1-300x300.jpg",
       originalPrice: "15.00",
       salePrice: "12.00",
-      onSale: true
+      onSale: false
     },
     {
       title: "Another Poster",
       image: "https://demo.zozothemes.com/seoaal/wp-content/uploads/sites/40/2013/06/poster_3_up-1-300x300.jpg",
       originalPrice: "20.00",
       salePrice: "20.00",
-      onSale: false
+      onSale: true
     },
     {
       title: "Another Poster",
@@ -105,7 +105,7 @@ const allProducts = [
       image: "https://demo.zozothemes.com/seoaal/wp-content/uploads/sites/40/2013/06/cd_5_angle-1-600x600.jpg",
       originalPrice: "15.00",
       salePrice: "12.00",
-      onSale: true
+      onSale: false
     },
     {
       title: "Another Poster",
@@ -147,7 +147,7 @@ const allProducts = [
       image: "https://demo.zozothemes.com/seoaal/wp-content/uploads/sites/40/2013/06/T_6_front-1-300x300.jpg",
       originalPrice: "15.00",
       salePrice: "12.00",
-      onSale: true
+      onSale: false
     },
     {
       title: "Another Poster",
@@ -161,7 +161,7 @@ const allProducts = [
       image: "https://demo.zozothemes.com/seoaal/wp-content/uploads/sites/40/2013/06/cd_6_angle-1-300x300.jpg",
       originalPrice: "20.00",
       salePrice: "20.00",
-      onSale: false
+      onSale: true
     }
   ];
   
@@ -247,7 +247,7 @@ function ShopCardSection() {
           <button
             key={idx}
             onClick={() => setCurrentPage(idx + 1)}
-            className={`px-3 py-1 border rounded ${
+            className={`px-4 py-2 border rounded font-semibold ${
               currentPage === idx + 1 ? 'bg-pink-500 text-white' : 'bg-white text-gray-700 border-gray-300'
             }`}
           >

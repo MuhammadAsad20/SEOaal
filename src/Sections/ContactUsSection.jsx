@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactUsSection = () => {
     return (
-        <section className="py-16 px-4 md:px-12">
+        <section className="py-16 px-4 md:px-12 mb-70">
 
 
             {/* Form + Map Section */}

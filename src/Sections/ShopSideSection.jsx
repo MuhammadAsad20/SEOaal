@@ -117,43 +117,49 @@ const ShopSideSection = () => {
 </div>
 
 
-            {/* Popular Posts */}
-<div className="relative mb-8 p-7 w-full lg:w-full h-[472px] overflow-hidden bg-white shadow rounded-md">
+            {/* Top Rated Products */}
+<div className="relative mb-8 p-3 md:p-7 w-full h-auto overflow-hidden bg-white shadow rounded-md">
+  {/* 🔴 Pink Circle Decoration */}
+  <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-24 h-24 bg-[#e53e8e] rounded-full z-0"></div>
 
-{/* 🔴 Pink Circle Decoration */}
-<div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-24 h-24 bg-[#e53e8e] rounded-full z-0"></div>
-
-{/* Actual Content */}
-<div className="relative z-10">
-  <h3 className="text-2xl font-semibold py-5 border-dashed border-pink-500 border-b-2 mb-10">
-  Top rated products
-  </h3>
-  <ul className="space-y-7">
-    {popularPosts.map((post, index) => (
-      <li key={index} className="flex space-x-3">
-        <a href={post.link}>
-          <img
-            src={post.img}
-            alt=""
-            className="w-20 h-20 object-cover rounded"
-          />
-        </a>
-        <div className="flex flex-col justify-around">
+  {/* Actual Content */}
+  <div className="relative z-10">
+    <h3 className="text-2xl font-semibold py-5 border-dashed border-pink-500 border-b-2 mb-10">
+      Top rated products
+    </h3>
+    <ul className="space-y-7">
+      {popularPosts.map((post, index) => (
+        <li
+          key={index}
+          className="flex flex-row space-x-4 space-y-3 items-start"
+        >
           <a
             href={post.link}
-            className="text-blue-900 w-45 hover:underline text-lg font-medium"
+            className="flex-shrink-0 w-20 h-20"
           >
-            {post.title}
+            <img
+              src={post.img}
+              alt=""
+              className="w-full h-full object-cover rounded"
+            />
           </a>
-          <p className="text-lg font-semibold text-gray-500 mt-1">
-            <span>{post.price}</span> ·
-          </p>
-        </div>
-      </li>
-    ))}
-  </ul>
+          <div className="flex flex-col justify-between w-full">
+            <a
+              href={post.link}
+              className="text-blue-900 hover:underline text-base text-lg font-bold"
+            >
+              {post.title}
+            </a>
+            <p className="text-sm sm:text-base font-semibold text-gray-500 mt-1">
+              <span>{post.price}</span>
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
 </div>
-</div>
+
 
 
 
